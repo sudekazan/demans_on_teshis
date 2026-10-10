@@ -1,4 +1,6 @@
 import os
+import warnings
+warnings.filterwarnings("ignore")
 import google.generativeai as genai
 
 class GeminiAdvisor:
