@@ -37,7 +37,23 @@ class CognitiveTrendAnalyzer:
                 "message": "Seans verisi henüz yetersiz. Analiz için en az 3 test seansı gereklidir."
             }
 
-        reaction_times = [s.get("mean_rt_ms", 650.0) for s in sessions]
+        # Contextual Normalization: Adjust reaction times if high fatigue or low sleep
+        normalized_rts = []
+        for s in sessions:
+            rt = s.get("mean_rt_ms", 650.0)
+            context = s.get("context", {}) or {}
+            sleep = context.get("sleep_score", 4)
+            fatigue = context.get("fatigue_score", 2)
+            
+            # If poor sleep or high fatigue, apply contextual adjustment penalty
+            penalty = 0.0
+            if sleep <= 2:
+                penalty += 40.0
+            if fatigue >= 4:
+                penalty += 60.0
+            normalized_rts.append(max(200.0, rt - penalty))
+
+        reaction_times = normalized_rts
         accuracies = [s.get("accuracy", 0.90) for s in sessions]
         std_devs = [s.get("std_dev_ms", 40.0) for s in sessions]
 
