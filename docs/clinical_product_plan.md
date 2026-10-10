@@ -114,5 +114,34 @@ Geliştirdiğimiz uygulama şu **3 Bilimsel Sütun** üzerine inşa edilmiştir:
 ### 📌 Adım 3: Sesli Rehber & Erişilebilirlik (TTS Entegrasyonu)
 - Yaşlı bireyler için kuralları sesli okuyan Text-to-Speech entegrasyonu.
 
-### 📌 Adım 4: Kullanıcı Testleri & Tez Raporu Hazırlığı
-- Simüle edilmiş bilişsel düşüş verileriyle ML modelinin %85+ doğrulukla test edilmesi.
+### 📌 Adım 4: Akıllı Saat & Sağlık Verisi Entegrasyonu (Passive Biomarkers)
+- Apple HealthKit (iOS) ve Google Health Connect (Android) entegrasyonu (`health` paketi).
+- Uyku Süresi (REM/Derin) ve HRV (Kalp Atım Değişkenliği) verilerinin otomatik çekilmesi.
+
+---
+
+## 6. Akıllı Saat & Pasif Dijital Biyobölteç (Passive Biomarkers) Mimarisi
+
+Sistemimiz iki tür biyobölteçi birleştirerek **Çoklu Modlu (Multi-Modal) Yapay Zeka Analizi** gerçekleştirir:
+
+```
++-------------------------------------------------------------------------+
+|                  ÇOKLU MODLU (MULTI-MODAL) VERİ AKIŞI                   |
++-------------------------------------------------------------------------+
+|  AKTİF BİYOBÖLTEÇLER (Oyunlar)     |  PASİF BİYOBÖLTEÇLER (Akıllı Saat)  |
+|  - Milisaniye Tepki Süresi (RT)    |  - Derin & REM Uyku Süresi          |
+|  - Birey İçi Değişkenlik (IIV)     |  - Kalp Atım Değişkenliği (HRV)     |
+|  - Doğruluk Oranı (Accuracy)       |  - Günlük Fiziksel Aktivite         |
++------------------------------------+------------------------------------+
+                                  |
+                                  v
+                +------------------------------------+
+                |  YAPAY ZEKA BAĞLAM NORMALİZASYONU |
+                |  (Fizyolojik Stres vs Demans)      |
+                +------------------------------------+
+```
+
+### Klinik Faydası:
+1. **Öz-Bildirim Sapmasını Engeller:** Yaşlı bireyin uyku kalitesini yanlış hatırlama riskini ortadan kaldırır.
+2. **Fizyolojik Stres Düzeltmesi:** Düşük HRV ve yetersiz uyku günlerinde düşen test skorları anomali/hastalık olarak etiketlenmez (Yalancı Pozitiflik engellenir).
+
